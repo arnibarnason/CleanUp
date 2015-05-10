@@ -14,9 +14,7 @@ for root, dirs, files in os.walk('dl'):
     for f in files:
         found = re.search('.*?' + x + '.*', f, re.I)
         if found != None:
-            print('root: ',root, '\tfile: ', f)
-            if os.path.exists(args.folder):
+            if not os.path.exists(args.folder):
                 os.makedirs(args.folder)
-                print('haaaaaallloo')
             print(os.path.join(os.path.abspath(root),f))
             os.rename(os.path.join(os.path.abspath(root),f), os.path.join(args.folder,f))    
