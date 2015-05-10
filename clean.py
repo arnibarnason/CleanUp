@@ -12,7 +12,9 @@ s = args.show
 x = s.replace(' ', '.')
 for root, dirs, files in os.walk('dl'):
     for f in files:
-        found = re.search('.*?' + x + '.*', f, re.I)
+        found = re.search(x + '.(S([0-9][0-9]))*', f, re.I)
+		season = "Season " + found.group(2)
+		print(f, "season: ", season)
         if found != None:
             if not os.path.exists(args.folder):
                 os.makedirs(args.folder)
